@@ -14,11 +14,12 @@ FILENAME = get_data_file_path('messages.log')
 
 
 def num_shutdowns(logfile):
-    """
-    Your docstring here.  Replace the pass keyword below with your implementation.
-    """
-    pass
-
+    logfile_in = open(logfile, 'r')
+    shutdown_events = []
+    for event in logfile_in.readlines():
+        if 'Shutdown complete' in event:
+            shutdown_events.append(event)
+    return len(shutdown_events)
 
 # >>>> The code below will call your function and print the results
 if __name__ == "__main__":
